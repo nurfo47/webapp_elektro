@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelef-extras-springsecurity3">
+<head lang="en" ---->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8= sha256-T+aPohYXbm0fRYDpJLr+zJ9RmYTswGsahAoIsNiMld4=" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+  
+    <title>Elektrotehnika</title>
+    <style>
+       
+</style>
+</head>
+<body>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index">ELEKTROTEHNIKA</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/index">Početna</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/posts">Obavijesti</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/projects">Projekti</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/professors">Nastavno osoblje</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/books">Knjige</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/info">Upiši se</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/faq">FAQ</a>
+              </li>
+              <li th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="nav-item">
+                <a class="nav-link" href="/users">Korisnici</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+        <!--Logout button and email address dropdown-->
+        <ul class="navbar-nav">
+          <div id="navbar" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span style="font-size: small;" sec:authentication="principal.username"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" sec:authorize="isAuthenticated()">
+                <a  th:href="@{/users/edit}" th:object="${user}" class="dropdown-item">Moj profil</a>
+                <a th:href="@{/logout}" class="dropdown-item">Odjava</a>
+              </div>
+          </div>
+      </ul>
+  </nav>
+    
+      <!-- Carousel Section -->
+    <!-- Carousel Section -->
+<div class="carousel">
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+              <a href="https://example.com/link1">
+                  <img th:src="@{/images/tfb-naslovna.jpg}" class="d-block w-100" alt="Slide 1">
+                  <div class="carousel-caption">
+                      <h3>TEHNIČKI FAKULTET BIHAĆ</h3>
+                      <p>Zgrada Tehničkog fakulteta Univerziteta u Bihaću</p>
+                  </div>
+              </a>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+              <a href="https://example.com/link2">
+                  <img th:src="@{/images/prijava.jpg}" class="d-block w-100" alt="Slide 2">
+                  <div class="carousel-caption">
+                      <h3>PRIJAVA ZA UPIS</h3>
+                      <p>Potrebni dokumenti za upis se nalaze klikom na sliku</p>
+                  </div>
+              </a>
+          </div>
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+              <a href="https://example.com/link3">
+                  <img th:src="@{/images/pravilnik.jpg}" class="d-block w-100" alt="Slide 3">
+                  <div class="carousel-caption">
+                      <h3>PRAVILNIK O ŠKOLOVANJU</h3>
+                      <p>Klikom na link možete pristupiti pravilniku</p>
+                  </div>
+              </a>
+          </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+</div>
+  
+    
+
+    <!-- Objave Section -->
+<div class="section" style="width: 90%; margin: 0 auto;">
+  <h1 class="justify-content-center">NAJNOVIJE OBJAVE</h1>
+  <div class="d-flex justify-content-end mb-2 mt-3">
+    
+    <a th:href="@{posts/new}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-dark">Dodaj objavu</a>
+</div>
+  
+  <div class="row">
+      <!-- Thymeleaf loop to iterate through posts -->
+      
+      <div th:each="post, status: ${lastFourPosts}" class="col-md-3 mb-3">
+          <div class="card h-100 d-flex flex-column">
+              
+            <div class="card-img-container">
+              
+              <img th:src="${post.pictureUrl}" class="card-img-top" alt="Image">
+              <a th:href="@{/posts/edit/{id}(id=${post.id})}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2">Uredi</a>
+              <a th:href="@{/posts/delete/{id}(id=${post.id})}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" class="btn btn-sm btn-danger position-absolute top-0 start-0 m-2">Obriši</a>
+            </div>
+              <div class="card-body d-flex flex-column">
+                
+                  <h5 class="card-title" th:text="${post.title}">Card Title</h5>
+                 <div class="d-inline-block text-truncate mb-4" style="max-width: 280px"> <p class="card-text" th:text="${post.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+                  <!--Modal open link-->
+                 <div class="mt-auto"><a href="#" data-bs-toggle="modal" th:data-bs-target="'#postModal_'+${status.index}">Prikaži više</a></div>
+              <!------------------- Modal for Post Details -------------->
+                      <div th:each="post, status: ${lastFourPosts}" th:id="'postModal_'+${status.index}" class="modal fade" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" th:text="${post.title}">Post Title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <img th:src="${post.pictureUrl}" class="img-fluid" alt="Image">
+                              <p th:text="${post.content}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                            <div class="modal-footer">
+                              <p th:text="${#dates.format(post.dateTime, 'dd-MM-yyyy')}"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+ 
+  <!-- Footer Section -->
+  <div class="footer bg-body-tertiary text-left py-1">
+    <div class="container">
+        <div class="row m-2">
+            <!-- First Column -->
+            <div class="col-md-3 col-sm-3 col-lg-3">
+              <h5>O nama</h5>
+              <p>Univerzitet u Bihaću</p>
+                <p>Ulica: Dr. Irfana Ljubijankića, Bihać 77000</p>
+                <p>Kontakt: +38737226271</p>
+            </div>
+            
+            <!-- Second Column -->
+            <div class="col-md-3 col-sm-3 col-lg-3">
+              <h5>Stranice</h5>
+              <a href="https://www.web.tfb.unbi.ba"><p>Stranica Tehničkog fakulteta</p></a>
+               <a href="https://www.info.tfb.ba"><p>Infoservis</p></a>
+               <a href="https://www.unbi.ba"><p>Stranica Univerziteta u Bihaću</p></a>
+            </div>
+            <!-- Third Column -->
+            <div class="col-md-3 col-sm-3 col-lg-3">
+                <h5>Društvene mreže</h5>
+                <a href="https://www.facebook.com/unbi.tfb/"><p>Facebook</p></a>
+                <a href="https://www.instagram.com/tehnickifakultet_bihac/"><p>Instagram</p></a>
+                <a href="https://www.youtube.com/channel/UCtadimJ0kX_lrJrzTTZsSLg"><p>YouTube</p></a>
+            </div>    
+            <!-- Forth Column -->
+            <div class="col-md-3 col-sm-3 col-lg-3">
+              <h5>Dizajn i izrada</h5>
+                <p>Napredne tehnike internet programiranja.</p>
+                <p>Nurfet Mehulić i Amar Handukić</p>
+                <p>Sva prava pridržana! 2023. godina</p>
+            </div>
+  
+  
+        </div>
+    </div>
+  </div>
+
+    
+<script>
+  // Initialize the carousel when the document is ready
+  $(document).ready(function() {
+      $('#carouselExample').carousel();
+  });
+
+  // Pause the carousel when a slide is clicked
+  $('#carouselExample').on('slide.bs.carousel', function () {
+      $(this).carousel('pause');
+  });
+</script>
+</body>
+</html>

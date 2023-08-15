@@ -1,0 +1,92 @@
+body {
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin: 0;
+    background-color: #f5f5f5;
+  }
+
+  .card-img-container {
+    overflow: hidden;
+    padding-top: 75%; /* 4:3 aspect ratio (3 / 4 = 0.75) */
+    position: relative;
+  }
+  .card-img-container-prof {
+    overflow: hidden;
+    padding-top: 100%;
+    position: relative;
+  }
+  .card-img-top {
+   object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .card-img-top-prof {
+    object-fit:contain;
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     top: 0;
+     left: 0;
+   }
+  .carousel {
+max-height: 100vh; /* Set the maximum height of the carousel */
+overflow: hidden; /* Hide overflowing content */
+}
+
+.carousel img {
+width: 100%; /* Make the images fill the available width */
+height: auto; /* Allow the images to adjust their height proportionally */
+object-fit: cover; /* Cut the images to fit the container */
+}
+
+/* Footer styling */
+.footer {
+    background-color: #343a40; /* Change this to match your desired background color */
+    color: white;
+    padding: 20px;
+    width: 100%;
+    align-items: left;
+    position: absolute;
+  }
+
+.footer p {
+margin: 0;
+color:black;
+padding: 5px 0;
+font-size: small;
+align-items: left;
+}
+
+.footer a{
+    text-decoration: none;
+    color:black;
+}
+
+.footer a:hover{
+    text-decoration: none;
+    font-weight: bold;
+}
+.footer h5{
+    color:black;
+
+}
+
+/* Center align the columns */
+.footer .row {
+justify-content: center;
+}
+
+/* Custom styling for select list */
+.form-select {
+  border-color: #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px; /* Adjust the width as needed */
+  background-color: white;
+  color: #333;
+}
