@@ -90,3 +90,21 @@ justify-content: center;
   background-color: white;
   color: #333;
 }
+
+
+.gallery-image,
+.thumbnail-image {
+    height: 300px; /* Set the desired height */
+    object-fit: cover; /* Maintain image aspect ratio */
+}
+
+/* Hide the hidden thumbnail images */
+.hidden-thumbnail {
+  display: none;
+}
+
+/* Show the active thumbnail image */
+.active-thumbnail {
+  display: block;
+}
+
