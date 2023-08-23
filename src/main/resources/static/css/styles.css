@@ -108,3 +108,18 @@ justify-content: center;
   display: block;
 }
 
+.carousel-item{
+  height: 32rem;
+  background: #777;
+  color: white;
+  position: relative;
+}
+
+table,th,td,tr{
+  border: 1px solid black;
+  
+}
+table.center{
+  margin-left: auto;
+  margin-right: auto;
+}
