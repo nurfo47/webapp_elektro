@@ -7,7 +7,8 @@ To run this application you need to have installed Java 17 and MySQL server, to 
 All settings of the application you can check in the file "pom.xml" and "resources/application.properties"
 
 # MAIN PAGE FOR PUBLIC
-![screencapture-localhost-8080-index-2023-08-23-17_43_26](https://github.com/user-attachments/assets/13eb879e-9fe2-4124-a06f-9096f7cd5c6c)
+![Uploading screencapture-localhost-8080-index-2023-08-23-17.png…]()
+
 
 # NEWS PAGE WITH ADMIN ROLE
 ![Screenshot 2023-08-23 173616](https://github.com/user-attachments/assets/4d49d4f1-4a6b-4f60-b52a-f9e395395d48)
